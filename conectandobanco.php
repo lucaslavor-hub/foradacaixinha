@@ -1,8 +1,8 @@
 <?php
 	$servidor = "localhost";
-	$usuario = "foradaca_banco";
-	$senha = ")?ljW1k&O+GS";
-	$dbname = "foradaca_banco";
+	$usuario = "nome";
+	$senha = "senha";
+	$dbname = "x";
 	$conecta = mysqli_connect($servidor, $usuario, $senha, $dbname);
 	
 	if(!$conecta){
