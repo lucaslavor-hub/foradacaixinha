@@ -1,0 +1,47 @@
+CREATE TABLE IF NOT EXISTS Professor (
+  ID 			INT NOT NULL,
+  email 		VARCHAR(100) NOT NULL,
+  Senha 		VARCHAR(20) NOT NULL,
+  Nivel 		INT NOT NULL,
+  PRIMARY KEY (ID));
+
+CREATE TABLE IF NOT EXISTS Tarefa (
+  ID 			VARCHAR(20) NOT NULL,
+  Data 			VARCHAR(20) NOT NULL,
+  Materia 		VARCHAR(20) NOT NULL,
+  Nota 			Float NOT NULL,
+  P_ID			INT NOT NULL,
+  PRIMARY KEY (ID),
+  CONSTRAINT fk_Tarefa_Professor
+    FOREIGN KEY (P_ID)
+    REFERENCES Professor (ID));
+
+CREATE TABLE IF NOT EXISTS Aluno (
+  ID 			INT NOT NULL,
+  email 		VARCHAR(100) NOT NULL,
+  Senha 		VARCHAR(20) NOT NULL,
+  Nivel 		INT NOT NULL,
+  PRIMARY KEY (ID),
+  CONSTRAINT fk_Aluno_Professor
+    FOREIGN KEY (P_ID)
+    REFERENCES Professor (ID),
+  CONSTRAINT fk_Aluno_Tarefa
+    FOREIGN KEY (T_ID)
+    REFERENCES Tarefa (ID));
+
+CREATE TABLE IF NOT EXISTS Aula (
+  ID_Aula 		INT NOT NULL,
+  data 			VARCHAR(20) NOT NULL,
+  PRIMARY KEY (ID_Aula),
+  CONSTRAINT fk_Aula_Professor
+    FOREIGN KEY (P_ID)
+    REFERENCES Professor (ID));
+
+CREATE TABLE IF NOT EXISTS Mascote (
+  Animal_mascote 		VARCHAR(60) NOT NULL,
+  Cor_mascote 			VARCHAR(60) NOT NULL,
+  A_ID 					INT NOT NULL,
+  PRIMARY KEY (A_ID),
+  CONSTRAINT fk_Mascote_Aluno
+    FOREIGN KEY (A_ID)
+    REFERENCES Aluno (ID));
